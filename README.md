@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
 ```
 
 As you can see all my StyleSheet sizes are in dp units on no scaling was done.  
-This will end up looking like this:
+This will end up looking like this (Obviously I'm not a designer):
 
 <div>
     <img src="images/iphone1.png" height="450" hspace="20"/>
@@ -294,4 +294,5 @@ Result:
 <br/>
 Like Morpheus said - a walk in the park :)<br/><br/>
 What I didn't cover is scaling images (SVGs ftw) and handling orientation change, we'll keep that for a different post.
-<br/>Hope you found this post useful, scaling is super important, even if your app is not released on tablet.
+<br/>Hope you found this post useful, scaling is super important, even if your app is not released on tablet. 
+Friends don't let friends skip scaling!
