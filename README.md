@@ -292,3 +292,6 @@ Result:
     <img src="images/tabletscaling.png" height="450" hspace="20"/>
 </div>
 <br/>
+Like Morpheus said - a walk in the park :)<br/><br/>
+What I didn't cover is scaling images (SVGs ftw) and handling orientation change, we'll keep that for a different post.
+<br/>Hope you found this post useful, scaling is super important, even if your app is not released on tablet.
