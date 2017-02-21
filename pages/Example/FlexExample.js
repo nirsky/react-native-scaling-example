@@ -4,23 +4,29 @@ import { View, Text, Dimensions, StyleSheet, TouchableOpacity } from 'react-nati
 import { loremIpsum } from './contants';
 const { width, height } = Dimensions.get('window');
 
-const Example = () =>
+const FlexExample = () =>
     <View style={styles.container}>
-        <View style={styles.box}>
-            <Text style={styles.title}>Awesome Blog Post Page</Text>
-            <Text style={styles.text}>{loremIpsum}</Text>
-            <View style={styles.buttonsContainer}>
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Accept</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Decline</Text>
-                </TouchableOpacity>
+        <View style={{flex: 16}}/>
+        <View style={{flexDirection: 'row', flex: 68}}>
+            <View style={{flex: 1}}/>
+            <View style={[styles.box, {flex: 8}]}>
+                <Text style={styles.title}>Awesome Blog Post Page</Text>
+                <Text style={styles.text}>{loremIpsum}</Text>
+                <View style={styles.buttonsContainer}>
+                    <TouchableOpacity style={styles.button}>
+                        <Text style={styles.buttonText}>Accept</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button}>
+                        <Text style={styles.buttonText}>Decline</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
+            <View style={{flex: 1}}/>
         </View>
+        <View style={{flex: 16}}/>
     </View>;
 
-export default Example;
+export default FlexExample;
 
 const styles = StyleSheet.create({
     container: {
@@ -31,8 +37,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     box: {
-        width: 300,
-        height: 450,
         backgroundColor: 'white',
         borderRadius: 10,
         padding: 10,
@@ -48,10 +52,12 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         fontWeight: 'bold',
-        marginBottom: 10
+        marginBottom: 10,
+        color: 'black'
     },
     text: {
-        fontSize: 14
+        fontSize: 14,
+        color: 'black'
     },
     buttonsContainer: {
         flex: 1,
@@ -69,6 +75,7 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         fontWeight: 'bold',
-        fontSize: 14
+        fontSize: 14,
+        color: 'black'
     }
 });

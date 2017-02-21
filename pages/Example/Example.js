@@ -7,7 +7,7 @@ const AwesomeComponent = () =>
     <View style={styles.container}>
         <View style={styles.box}>
             <Text style={styles.title}>Awesome Blog Post Page</Text>
-            <Text style={styles.text}>{loremIpsum + '\nwidth: ' + width + '\nheight: ' + height}</Text>
+            <Text style={styles.text}>{loremIpsum}</Text>
             <View style={styles.buttonsContainer}>
                 <TouchableOpacity style={styles.button}>
                     <Text style={styles.buttonText}>Accept</Text>

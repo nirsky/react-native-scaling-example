@@ -11,13 +11,13 @@ has **768dp** width and **1024dp** height.<br/>
 So while a `<View style={{width: 300, height: 450}}/>` will cover most of your iPhone screen 
 it will cover less than half of your tablet screen.
 
-<h4>So how can I make my app sexy on the tablet as well?</h4>
+<h3>So how can I make my app sexy on the tablet as well?</h3>
 Oh! I'm glad you asked. On this blog post I'll show several methods to scale your components among 
 different screen sizes, and which one I found best.  
 For this purpose I created a small example app, and on every scaling method I'll attach the component's 
 code along with a screenshot an a tablet and an iPhone.
 
-<h4>No scaling example</h4>
+<h3>No scaling example</h3>
 
 So this is the component:
 ```javascript
@@ -110,4 +110,44 @@ This will end up looking like this:
     <img src="images/tablet1.png" height="450" hspace="20"/>
 </div>
 
-That's obviously not how we want our component to look like on the tablet.. 
+<br/>That's obviously not how we want our component to look like on the tablet..
+ 
+<h3>Method 1: Flex</h3>
+
+If you're not familiar with flex I urge to read about it online. 
+[Here's a simple blog post you can start with](http://browniefed.com/blog/react-native-layout-examples/).  
+When designing scalable component with flex you need to convert your View's size **and it's margins** with 
+proportion the the parent component. So if for example our container's width is 375 and our box's width is 300 - 
+the box's width is 80% of the parent (300/375) and the margins are what left - 10% on the left and 10% on the right.  
+<br/>Here's an example how I *flexed* my component, I only flexed the white box and skipped flexing the buttons because I'm lazy,
+ but you get the point (StyleSheet is the same except width and height was removed from `box`):
+ 
+ ```javascript
+const FlexExample = () =>
+    <View style={styles.container}>
+        <View style={{flex: 16}}/>
+        <View style={{flexDirection: 'row', flex: 68}}>
+            <View style={{flex: 1}}/>
+            <View style={[styles.box, {flex: 8}]}>
+                <Text style={styles.title}>Awesome Blog Post Page</Text>
+                <Text style={styles.text}>{loremIpsum}</Text>
+                <View style={styles.buttonsContainer}>
+                    <TouchableOpacity style={styles.button}>
+                        <Text style={styles.buttonText}>Accept</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button}>
+                        <Text style={styles.buttonText}>Decline</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+            <View style={{flex: 1}}/>
+        </View>
+        <View style={{flex: 16}}/>
+    </View>;
+```
+
+<div>
+    <img src="images/iphoneflex.png" height="450" hspace="20"/>
+    <img src="images/tabletflex.png" height="450" hspace="20"/>
+</div>
+<br/>
