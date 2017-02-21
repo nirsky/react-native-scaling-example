@@ -146,8 +146,22 @@ const FlexExample = () =>
     </View>;
 ```
 
+And the result:
 <div>
     <img src="images/iphoneflex.png" height="450" hspace="20"/>
     <img src="images/tabletflex.png" height="450" hspace="20"/>
 </div>
 <br/>
+
+Although the box has a good size on the tablet I personally don't recommend flexing you components.  
+Flex can be an amazing solution for a lot of stuff but not for scaling, because..
+
+* Results in a messy code with a lot of empty Views.
+* You can only flex width, height, margin and padding. Stuff like font-size or shadow-radius can't be flexed.
+* Calculating everything with flex takes time, and as we know, time is money.
+
+That said, we can now continue to our second method.
+ 
+ <h3>Method 2: Viewport Units</h3>
+ 
+ 
