@@ -102,5 +102,14 @@ const styles = StyleSheet.create({
 As you can see all my StyleSheet sizes are in dp units on no scaling was done.  
 This will end up looking like this:
 
-<img src="images/iphone1.png" width="300" />
+<figure>
+    <img src="images/iphone1.png" width="300"/>
+    <figcaption>iPhone 7</figcaption>
+</figure>
+
+<figure>
+    <img src="images/tablet1.png" width="300"/>
+    <figcaption>Galaxy Tab A 8.0"</figcaption>
+</figure>
+
 
