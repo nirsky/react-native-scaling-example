@@ -17,7 +17,7 @@ different screen sizes, and which one I found best.
 For this purpose I created a small example app, and on every scaling method I'll attach the component's 
 code along with a screenshot an a tablet and an iPhone.
 
-<h4>No scaling</h4>
+<h4>No scaling example</h4>
 
 So this is the component:
 ```javascript
@@ -101,4 +101,5 @@ const styles = StyleSheet.create({
 
 As you can see all my StyleSheet sizes are in dp units on no scaling was done.  
 This will end up looking like this:
-![iPhone](images/iphone1.png "iPhone7")
+
+![iPhone](./images/iphone1.png =250x100)
