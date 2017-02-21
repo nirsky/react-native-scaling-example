@@ -3,7 +3,7 @@ import { View, Text, Dimensions, StyleSheet, TouchableOpacity } from 'react-nati
 import { loremIpsum } from './contants';
 const { width, height } = Dimensions.get('window');
 
-const Example = () =>
+const ScalingExample = () =>
     <View style={styles.container}>
         <View style={styles.box}>
             <Text style={styles.title}>Awesome Blog Post Page</Text>
@@ -19,7 +19,9 @@ const Example = () =>
         </View>
     </View>;
 
-export default Example;
+export default ScalingExample;
+
+import { scale, moderateScale, verticalScale} from './scaling';
 
 const styles = StyleSheet.create({
     container: {
@@ -30,11 +32,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     box: {
-        width: 300,
-        height: 450,
+        width: moderateScale(300),
+        height: verticalScale(450),
+        padding: scale(10),
         backgroundColor: 'white',
         borderRadius: 10,
-        padding: 10,
         shadowColor: 'black',
         shadowOpacity: 0.5,
         shadowRadius: 3,
@@ -45,13 +47,13 @@ const styles = StyleSheet.create({
         elevation: 2
     },
     title: {
-        fontSize: 20,
+        fontSize: moderateScale(20, 0.4),
         fontWeight: 'bold',
-        marginBottom: 10,
+        marginBottom: scale(10),
         color: 'black'
     },
     text: {
-        fontSize: 14,
+        fontSize: moderateScale(14),
         color: 'black'
     },
     buttonsContainer: {
@@ -60,17 +62,17 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     button: {
-        width: 150,
-        height: 45,
+        width: moderateScale(150, 0.3),
+        height: moderateScale(45, 0.3),
         borderRadius: 100,
-        marginBottom: 10,
+        marginBottom: moderateScale(10, 0.6),
         backgroundColor: '#66E8FF',
         alignItems: 'center',
         justifyContent: 'center',
     },
     buttonText: {
         fontWeight: 'bold',
-        fontSize: 14,
+        fontSize: moderateScale(14),
         color: 'black'
     }
 });

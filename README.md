@@ -218,16 +218,75 @@ And of course, what you all been waiting for, the result:
     <img src="images/tabletviewport.png" height="450" hspace="20"/>
 </div>
 <br/>
-Beside having weird numbers around, pretty neat and easy right?  
+Beside needing to do some calculation and having weird numbers around, pretty neat and easy right?  
 But wait! You show your designer how it looks on the tablet and he thinks the buttons and the box's
 width are too big. What can you do? If you reduce the viewports it will affect the iPhone as well.<br/>
      
 One option is to do some something like HTML's `media-query` using [PixelRatio](https://facebook.github.io/react-native/docs/pixelratio.html),
-but as I said, I'm lazy and I don't want to write everything 2 or more times..
+but as I said, I'm lazy and I don't want to write everything 2 or more times, what can I do?
 
 <p align="center">
     <img src="images/meme.jpg" height="250"/>
 </p>
 
+ <h3>Method 3: Scaling Utils</h3>
+ Here at Soluto, we wrote this 2 simple functions that makes our scaling so much easier:
+  ```javascript
+import { Dimensions } from 'react-native';
+const { width, height } = Dimensions.get('window');
 
+const scale = size => width / 350 * size;
+const verticalScale = size => height / 680 * size;
+const moderateScale = (size, factor = 0.5) => size + ( scale(size) - size ) * factor;
 
+export {scale, verticalScale, moderateScale};
+```
+
+`scale` function is pretty straight-forward and will give you the same linear result as using viewport.
+`verticalScale` is like scale but based on height instead of width.<br/>
+The real magic happens at `moderateScale`. You can check the formula, but long story short - 
+it won't 'exaggerate' when going on the big screen. You can also control the resize factor,
+passing `1` as the resize factor will be like regular scale, and passing `0` will be like no scaling at all.<br/>
+
+Anyway, enough talking, here are the results after combining scale and moderateScale until your designer is pleased:
+
+StyleSheet:
+```javascript
+import { scale, moderateScale, verticalScale} from './scaling';
+
+const styles = StyleSheet.create({
+    ...
+    box: {
+        width: moderateScale(300),
+        height: verticalScale(450),
+        padding: scale(10),
+        ...
+    },
+    title: {
+        fontSize: moderateScale(20, 0.4),
+        marginBottom: scale(10),
+        ...
+    },
+    text: {
+        fontSize: moderateScale(14),
+        ...
+    },
+    button: {
+        width: moderateScale(150, 0.3),
+        height: moderateScale(45, 0.3),
+        marginBottom: moderateScale(10, 0.6),
+        ...
+    },
+    buttonText: {
+        fontSize: moderateScale(14),
+        ...
+    }
+});
+```
+
+Result:
+<div>
+    <img src="images/iphonescaling.png" height="450" hspace="20"/>
+    <img src="images/tabletscaling.png" height="450" hspace="20"/>
+</div>
+<br/>
