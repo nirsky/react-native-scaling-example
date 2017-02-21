@@ -6,7 +6,7 @@ and when you run it on an a Tablet everything looked like you left it too long a
 <br/>
 That's probably because the design was created using dp (density pixels). 
 To keep things simple - the bigger your device the more dp it'll have.
-<br/>When working with React-Native iPhone 7 has **375dp** width and **667dp** height and a Galaxy Tab A 8.0" Tablet (the one I'm using) 
+<br/>When working with React-Native, iPhone 7 has **375dp** width and **667dp** height and a Galaxy Tab A 8.0" Tablet (the one I'm using) 
 has **768dp** width and **1024dp** height.<br/>
 So while a `<View style={{width: 300, height: 450}}/>` will cover most of your iPhone screen 
 it will cover less than half of your tablet screen.
@@ -110,7 +110,7 @@ This will end up looking like this:
     <img src="images/tablet1.png" height="450" hspace="20"/>
 </div>
 
-<br/>That's obviously not how we want our component to look like on the tablet..
+<br/>That's obviously not how we want our component to look like on the tablet (Did I say dryer already?).
  
 <h3>Method 1: Flex</h3>
 
@@ -218,3 +218,13 @@ And of course, what you all been waiting for, the result:
     <img src="images/tabletviewport.png" height="450" hspace="20"/>
 </div>
 <br/>
+Beside having weird numbers around, pretty neat and easy right?  
+But wait! You show your designer how it looks on the tablet and he thinks the buttons and the box's
+width are too big. What can you do? If you reduce the viewports it will affect the iPhone as well.<br/>
+     
+One option is to do some something like HTML's `media-query` using [PixelRatio](https://facebook.github.io/react-native/docs/pixelratio.html),
+but as I said, I'm lazy and I don't want to write everything 2 or more times..
+
+<img src="images/meme.jpg" height="450" hspace="100"/>
+
+
