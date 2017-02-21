@@ -102,4 +102,6 @@ const styles = StyleSheet.create({
 As you can see all my StyleSheet sizes are in dp units on no scaling was done.  
 This will end up looking like this:
 
-![iPhone](./images/iphone1.png =250x100)
+![iPhone](./images/iphone1.png)
+<img src="images/iphone1.png" width="200" height="400"/>
+
