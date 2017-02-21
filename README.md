@@ -225,6 +225,6 @@ width are too big. What can you do? If you reduce the viewports it will affect t
 One option is to do some something like HTML's `media-query` using [PixelRatio](https://facebook.github.io/react-native/docs/pixelratio.html),
 but as I said, I'm lazy and I don't want to write everything 2 or more times..
 
-<img src="images/meme.jpg" height="450" hspace="100"/>
+<img src="images/meme.jpg" height="250" hspace="100"/>
 
 
