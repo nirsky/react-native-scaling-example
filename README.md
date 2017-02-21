@@ -167,11 +167,11 @@ That said, we can now continue to our second method.
  <h3>Method 2: Viewport Units</h3>
 On this method you basically convert every number you'd like to scale on your StyleSheet to 
 a percentage of the device's width or height.  
-So If your device's width is 375, 300dp will become `deviceWidth * 0.8` (300/375 = 0.8), 
+So If your device's width is 375dp then 300dp will become `deviceWidth * 0.8` (300/375 = 0.8), 
 and you can also do it on smaller numbers, for example `fontSize: 14` will become `fontSize: deviceWidth * 0.037`.  
 A nice and straight-forward library that can simplify this method is [react-native-viewport-units](https://github.com/jmstout/react-native-viewport-units).  
 <br/>
-This is they StyleSheet after *viewporting* stuff around (irrelevant parts were removed, component is exactly the same as the first example):  
+This is the StyleSheet after *viewporting* stuff around (irrelevant parts were removed, component is exactly the same as the first example):  
 
 ```javascript
 import {vw, vh} from 'react-native-viewport-units';
@@ -232,7 +232,7 @@ but as I said, I'm lazy and I don't want to write everything 2 or more times, wh
 </p>
 
  <h3>Method 3: Scaling Utils</h3>
- Here at Soluto, we wrote this 2 simple functions that makes our scaling so much easier:
+ Here at Soluto, we wrote this 3 simple functions that makes our scaling so much easier:
   ```javascript
 import { Dimensions } from 'react-native';
 const { width, height } = Dimensions.get('window');
