@@ -1,5 +1,7 @@
 <h1>Make your React-Native app sexy on every size</h1>
 
+*Every example on this post can be found [here](https://github.com/Nirsky/react-native-scaling-example).*
+
 Did it ever happen to you that your designer handed you a cool design, 
 you developed it on, let's say, an iPhone 7, 
 and when you run it on an a Tablet everything looked like you left it too long at the dryer?
@@ -248,7 +250,7 @@ The real magic happens at `moderateScale`. You can check the formula, but long s
 it won't 'exaggerate' when going on the big screen. You can also control the resize factor,
 passing `1` as the resize factor will be like regular scale, and passing `0` will be like no scaling at all.<br/>
 
-Anyway, enough talking, here are the results after combining scale and moderateScale until your designer is pleased:
+Anyway, enough talking, here are the results after combining `scale` and `moderateScale` until your designer is pleased.
 
 StyleSheet:
 ```javascript
