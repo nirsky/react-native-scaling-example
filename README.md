@@ -73,10 +73,12 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         fontWeight: 'bold',
-        marginBottom: 10
+        marginBottom: 10,
+        color: 'black'
     },
     text: {
-        fontSize: 14
+        fontSize: 14,
+        color: 'black'
     },
     buttonsContainer: {
         flex: 1,
@@ -94,7 +96,8 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         fontWeight: 'bold',
-        fontSize: 14
+        fontSize: 14,
+        color: 'black'
     }
 });
 ```
@@ -107,3 +110,4 @@ This will end up looking like this:
     <img src="images/tablet1.png" height="450" hspace="20"/>
 </div>
 
+That's obviously not how we want our component to look like on the tablet.. 

@@ -47,10 +47,12 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         fontWeight: 'bold',
-        marginBottom: 10
+        marginBottom: 10,
+        color: 'black'
     },
     text: {
-        fontSize: 14
+        fontSize: 14,
+        color: 'black'
     },
     buttonsContainer: {
         flex: 1,
@@ -68,6 +70,7 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         fontWeight: 'bold',
-        fontSize: 14
+        fontSize: 14,
+        color: 'black'
     }
 });
