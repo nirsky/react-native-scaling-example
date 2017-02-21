@@ -157,11 +157,64 @@ Although the box has a good size on the tablet I personally don't recommend flex
 Flex can be an amazing solution for a lot of stuff but not for scaling, because..
 
 * Results in a messy code with a lot of empty Views.
-* You can only flex width, height, margin and padding. Stuff like font-size or shadow-radius can't be flexed.
+* You can only flex properties like width, height, margin and padding. Stuff like font-size or shadow-radius can't be flexed.
 * Calculating everything with flex takes time, and as we know, time is money.
 
 That said, we can now continue to our second method.
  
  <h3>Method 2: Viewport Units</h3>
+On this method you basically convert every number you'd like to scale on your StyleSheet to 
+a percentage of the device's width or height.  
+So If your device's width is 375, 300dp will become `deviceWidth * 0.8` (300/375 = 0.8), 
+and you can also do it on smaller numbers, for example `fontSize: 14` will become `fontSize: deviceWidth * 0.037`.  
+A nice and straight-forward library that can simplify this method is [react-native-viewport-units](https://github.com/jmstout/react-native-viewport-units).  
+<br/>
+This is they StyleSheet after *viewporting* stuff around (irrelevant parts were removed, component is exactly the same as the first example):  
+
+```javascript
+import {vw, vh} from 'react-native-viewport-units';
+
+const styles = StyleSheet.create({
+    container: {
+        ...
+    },
+    box: {
+        width: 80 * vw,
+        height: 67 * vh,
+        padding: 2.6 * vw,
+        ...
+    },
+    title: {
+        fontSize: 5.3 * vw,
+        marginBottom: 2.6 * vw,
+        fontWeight: 'bold',
+        color: 'black'
+    },
+    text: {
+        fontSize: 3.6 * vw,
+        color: 'black'
+    },
+    buttonsContainer: {
+        ...
+    },
+    button: {
+        width: 40 * vw,
+        height: 10.7 * vw,
+        borderRadius: 27 * vw,
+        marginBottom: 2.6 * vw,
+        ...
+    },
+    buttonText: {
+        fontWeight: 'bold',
+        fontSize: 3.6 * vw,
+        color: 'black'
+    }
+});
+```
  
- 
+And of course, what you all been waiting for, the result:
+<div>
+    <img src="images/iphoneviewport.png" height="450" hspace="20"/>
+    <img src="images/tabletviewport.png" height="450" hspace="20"/>
+</div>
+<br/>
