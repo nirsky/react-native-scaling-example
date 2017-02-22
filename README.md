@@ -4,7 +4,7 @@
 
 Has it ever happened to you that your designer handed you a cool design for your React-Native app, 
 you developed it on, let's say, an iPhone 7, 
-and when you run it on an a tablet everything looks like you left it too long in the dryer?
+and when you run it on a tablet everything looks like you left it too long in the dryer?
 <br/>
 That's probably because the design was created using dp (density pixels). 
 To keep things simple - the bigger your device is, the more dp it'll have.
@@ -118,7 +118,7 @@ This will end up looking like this (Obviously I'm not a designer):
 If you're not familiar with flex I urge you to read about it online. 
 [Here's a simple blog post you can start with](http://browniefed.com/blog/react-native-layout-examples/).  
 When developing a scalable component with flex you need to convert your View's size **and its margins** with 
-proportion the the parent component. If for example your container's width is 375 and your box's width is 300 - 
+proportion to the parent component. If for example your container's width is 375 and your box's width is 300 - 
 the box's width is 80% of the parent (300/375) and the margins are what left - 10% on the left and 10% on the right.  
 <br/>Here's an example how I *flexed* my component. I only flexed the white box and skipped flexing the buttons because I'm lazy,
  but you get the point (StyleSheet stayed the same except `width` and `height` were removed from `box`):
@@ -249,7 +249,8 @@ The real magic happens at `moderateScale`. You can check the formula, but long s
 it won't 'exaggerate' when scaling for a big screen. You can also control the resize factor,
 passing `1` as the resize factor will be like regular `scale`, and passing `0` will be like no scaling at all.<br/>
 
-Anyway, enough talking, here are the results after combining `scale` and `moderateScale` until your designer is pleased.
+Anyway, enough talking, here are the results after combining `scale`, `moderateScale` and `verticalScale` 
+until your designer is pleased.
 
 StyleSheet:
 ```javascript
