@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     container: {
         width: width,
         height: height,
-        backgroundColor: '#F0D6FF',
+        backgroundColor: '#E0E0E0',
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -66,13 +66,13 @@ const styles = StyleSheet.create({
         height: 10.7 * vw,
         borderRadius: 27 * vw,
         marginBottom: 2.6 * vw,
-        backgroundColor: '#66E8FF',
+        backgroundColor: '#41B6E6',
         alignItems: 'center',
         justifyContent: 'center',
     },
     buttonText: {
         fontWeight: 'bold',
         fontSize: 3.6 * vw,
-        color: 'black'
+        color: 'white'
     }
 });

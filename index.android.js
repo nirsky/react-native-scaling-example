@@ -1,11 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { AppRegistry } from 'react-native';
-import Example from './pages/Example';
-import FlexExample from './pages/FlexExample';
-import ViewPortExample from './pages/ViewPortExample';
-import ScalingExample from './pages/ScalingExample';
+import App from './pages/App';
 
-const BlogPost = () => <ScalingExample/>;
+const BlogPost = () => <App/>;
 export default BlogPost;
 
 AppRegistry.registerComponent('BlogPost', () => BlogPost);
