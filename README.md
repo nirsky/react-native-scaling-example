@@ -1,4 +1,4 @@
-<h1>Make your React-Native App Sexy on Every Size</h1>
+<h1>Make your React-Native App Appealing on Every Size</h1>
 
 *Every example on this post can be found [here](https://github.com/Nirsky/react-native-scaling-example).*
 
@@ -12,7 +12,7 @@ To keep things simple - the bigger your device is, the more dp it'll have.
 So while a `<View style={{width: 300, height: 450}}/>` will cover most of your iPhone screen, 
 it will cover less than half of your tablet screen.
 
-<h3>So how can I make my app sexy on the tablet as well?</h3>
+<h3>So how can I make my app beautiful on the tablet as well?</h3>
 Oh! I'm glad you asked. On this blog post I'll show several methods to scale your components for 
 different screen sizes, and which one I found best.  
 For the purpose of this I created a small example app, and after every scaling method I'll attach the 
