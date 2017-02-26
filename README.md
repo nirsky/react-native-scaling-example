@@ -6,7 +6,8 @@ Has it ever happened to you that your designer handed you a cool design for your
 you developed it on, let's say, an iPhone 7, 
 and when you run it on a tablet everything looks like you left it too long in the dryer?
 <br/>
-That's probably because the design was created using dp (density pixels). 
+That's probably because the design was created using pixels and all dimensions in React Native are unitless, 
+and represent dp (density-independent pixels). 
 To keep things simple - the bigger your device is, the more dp it'll have.
 <br/>When working with React-Native, iPhone 7 has **375dp** width and **667dp** height and a Galaxy Tab A 8.0" Tablet (the one I'm using) has **768dp** width and **1024dp** height.<br/>
 So while a `<View style={{width: 300, height: 450}}/>` will cover most of your iPhone screen, 
