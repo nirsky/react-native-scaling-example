@@ -19,7 +19,7 @@ different screen sizes, and which one I found best.
 For the purpose of this I created a small example app, and after every scaling method I'll attach the 
 code along with screenshots for both a tablet and an iPhone.
 
-<h3>No scaling example</h3>
+<h3>How it looks without scaling</h3>
 
 So this is the component:
 ```javascript
@@ -220,6 +220,11 @@ And of course, what you have all been waiting for... the result:
     <img src="images/tabletviewport.png" height="450" hspace="20"/>
 </div>
 <br/>
+
+_Note: You'll be able to achieve more or less the same result using the 
+new [percentage support](https://github.com/facebook/react-native/commit/3f49e743bea730907066677c7cbfbb1260677d11) (RN 0.43 and up)
+or by multiplying everything with `PixelRatio.get()`._
+<br/><br/>
 Besides needing to do some calculation and having weird numbers around, pretty neat and easy, right?  
 But little did you know.. You show your designer how it looks on the tablet and he thinks the buttons are too big and the box's
 width should be reduced. What can you do? If you reduce the viewports it will affect the iPhone as well.<br/>
