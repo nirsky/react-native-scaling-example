@@ -2,22 +2,21 @@
 
 *Every example on this post can be found [here](https://github.com/Nirsky/react-native-scaling-example).*
 
-Has it ever happened to you that your designer handed you a cool design for your React-Native app, 
-you developed it on, let's say, an iPhone 7, 
-and when you run it on a tablet everything looks like you left it too long in the dryer?
+Have you ever had your designer hand you a cool design for your React-Native app that you developed on, say, an iPhone 7 - and when you try to run it on a tablet, 
+it looks like it was left in the dryer for too long? 
 <br/>
-That's probably because the design was created using pixels and all dimensions in React Native are unitless, 
-and represent dp (density-independent pixels). 
-To keep things simple - the bigger your device is, the more dp it'll have.
-<br/>When working with React-Native, iPhone 7 has **375dp** width and **667dp** height and a Galaxy Tab A 8.0" Tablet (the one I'm using) has **768dp** width and **1024dp** height.<br/>
-So while a `<View style={{width: 300, height: 450}}/>` will cover most of your iPhone screen, 
-it will cover less than half of your tablet screen.
+That's probably because the design was created using pixels whereas all dimensions in React Native are unitless, 
+represented by “dp” (density-independent pixels). Simply put - the bigger your device is, the more dp it'll have. 
+<br/>
+When working with React-Native, the iPhone 7 has **375dp** width and **667dp** height and a Galaxy Tab A 8.0" Tablet (the one I'm using) has **768dp** width and **1024dp** height.
+<br/>
+So while a `<View style={{width: 300, height: 450}}/>` will cover most of your iPhone's screen, 
+it will cover less than half of your tablet's screen.
 
 <h3>So how can I make my app beautiful on the tablet as well?</h3>
-Oh! I'm glad you asked. On this blog post I'll show several methods to scale your components for 
-different screen sizes, and which one I found best.  
-For the purpose of this I created a small example app, and after every scaling method I'll attach the 
-code along with screenshots for both a tablet and an iPhone.
+Glad you asked. On this blog post I'll show several methods for scaling your components to different screen sizes, and which one I found to work best.
+<br/>
+To do this, I created a small example app, and after every scaling method I'll attach the code along with screenshots for both a tablet and an iPhone.
 
 <h3>How it looks without scaling</h3>
 
@@ -105,7 +104,7 @@ const styles = StyleSheet.create({
 ```
 
 As you can see, all my StyleSheet sizes are in dp units and no scaling was done.  
-This will end up looking like this (Obviously I'm not a designer):
+It will end up looking like this (obviously, I'm not a designer):
 
 <div>
     <img src="images/iphone1.png" height="450" hspace="20"/>
@@ -117,11 +116,13 @@ This will end up looking like this (Obviously I'm not a designer):
 <h3>Method 1: Flex</h3>
 
 If you're not familiar with flex I urge you to read about it online. 
-[Here's a simple blog post you can start with](http://browniefed.com/blog/react-native-layout-examples/).  
+[For starters check this flex playground](https://codepen.io/enxaneta/full/adLPwv).
+<br/><br/>
 When developing a scalable component with flex you need to convert your View's size **and its margins** with 
 proportion to the parent component. If for example your container's width is 375 and your box's width is 300 - 
-the box's width is 80% of the parent (300/375) and the margins are what left - 10% on the left and 10% on the right.  
-<br/>Here's an example how I *flexed* my component. I only flexed the white box and skipped flexing the buttons because I'm lazy,
+the box's width is 80% of the parent (300/375) and the margins are what left - 10% on the left and 10% on the right.
+<br/><br/>
+Here's an example how I *flexed* my component. I only flexed the white box and skipped flexing the buttons because I'm lazy,
  but you get the point (StyleSheet stayed the same except `width` and `height` were removed from `box`):
  
  ```javascript
@@ -155,22 +156,23 @@ And the result:
 </div>
 <br/>
 
-Even though the box's size looks good on the tablet, I personally don't recommend flexing your components for scaling.  
-Flex can be an amazing solution for a lot of stuff, but not for scaling, because..
-
+Even though the box's size looks good on the tablet, I personally don't recommend flexing your components for scaling.
+<br/>
+Flex can be an amazing solution for a lot of stuff, but not necessarily for scaling, because:
 * The resulting code is messy with a lot of empty Views.
 * You can only flex properties like width, height, margin and padding. Stuff like font-size or shadow-radius can't be flexed.
 * Calculating everything with flex takes time, and as we know, time is money.
 
-That being said, we can now continue to our second method.
+With that said, let’s continue to our second method.
+
  
  <h3>Method 2: Viewport Units</h3>
 With this method you basically convert every number you'd like to scale in your StyleSheet to 
 a percentage of the device's width or height.  
 If your device's width is 375dp then 300dp will become `deviceWidth * 0.8` (since 300/375 = 0.8), 
 and you can also do it with smaller numbers, for example `fontSize: 14` will become `fontSize: deviceWidth * 0.037`.  
-A nice and straight-forward library that can simplify this method is [react-native-viewport-units](https://github.com/jmstout/react-native-viewport-units).  
-<br/>
+A nice and straight-forward library that can simplify this method is [react-native-viewport-units](https://github.com/jmstout/react-native-viewport-units).
+<br/><br/>
 This is the StyleSheet after *viewporting* stuff around (Irrelevant parts were removed, component is exactly the same as the first example):  
 
 ```javascript
@@ -226,8 +228,8 @@ new [percentage support](https://github.com/facebook/react-native/commit/3f49e74
 or by multiplying everything with `PixelRatio.get()`._
 <br/><br/>
 Besides needing to do some calculation and having weird numbers around, pretty neat and easy, right?  
-But little did you know.. You show your designer how it looks on the tablet and he thinks the buttons are too big and the box's
-width should be reduced. What can you do? If you reduce the viewports it will affect the iPhone as well.<br/>
+...but still not perfect. What if you show your designer how it looks on the tablet and he thinks the buttons are too big and the box's width should be reduced. 
+What can you do? If you reduce the viewports it will affect the iPhone as well.<br/>
      
 One option is to do something like HTML's `media-query` using [PixelRatio](https://facebook.github.io/react-native/docs/pixelratio.html).
 But as I said, I'm lazy and I don't want to write everything 2 or more times, what can I do?
@@ -255,7 +257,7 @@ The real magic happens at `moderateScale`. You can check the formula, but long s
 it won't 'exaggerate' when scaling for a big screen. You can also control the resize factor,
 passing `1` as the resize factor will be like regular `scale`, and passing `0` will be like no scaling at all.<br/>
 
-Anyway, enough talking, here are the results after combining `scale`, `moderateScale` and `verticalScale` 
+Anyways, enough talking. Here are the results after combining `scale`, `moderateScale` and `verticalScale` 
 until your designer is pleased.
 
 StyleSheet:
@@ -299,6 +301,6 @@ Result:
 </div>
 <br/>
 Like Morpheus said - a walk in the park :)<br/><br/>
-What I didn't cover is scaling images (SVGs ftw) and handling orientation change. We'll keep that for a different post.
-<br/>I hope you found this post useful. Scaling is super important, even if your app is not released on tablet. 
-Friends don't let friends skip scaling!
+What I didn't cover is scaling images and handling orientation change. We'll keep that for a different post. 
+<br/>I hope you found this post useful. Scaling is super important, even if your app is not for tablets. Friends don't let friends skip scaling!
+
