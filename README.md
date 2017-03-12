@@ -1,4 +1,4 @@
-<h1>Make your React-Native App Appealing on Every Size</h1>
+<h1>Make your React-Native App Look Great in Every Size</h1>
 
 *Every example on this post can be found [here](https://github.com/Nirsky/react-native-scaling-example).*
 
