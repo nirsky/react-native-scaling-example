@@ -1,11 +1,10 @@
 import React from 'react';
 import { View, Text, Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
-// import { scale, moderateScale } from 'modules/scaling';
 import { loremIpsum } from './contants';
 const { width, height } = Dimensions.get('window');
 
 const FlexExample = () =>
-    <View style={styles.container}>
+    <View style={[styles.container, {flex: 1}]}>
         <View style={{flex: 16}}/>
         <View style={{flexDirection: 'row', flex: 68}}>
             <View style={{flex: 1}}/>
@@ -30,8 +29,6 @@ export default FlexExample;
 
 const styles = StyleSheet.create({
     container: {
-        width: width,
-        height: height,
         backgroundColor: '#E0E0E0',
         alignItems: 'center',
         justifyContent: 'center',

@@ -116,19 +116,22 @@ It will end up looking like this (obviously, I'm not a designer):
 <h3>Method 1: Flex</h3>
 
 If you're not familiar with flex I urge you to read about it online. 
-[For starters check this flex playground](https://codepen.io/enxaneta/full/adLPwv).
+For starters check this [flex playground](https://codepen.io/enxaneta/full/adLPwv) 
+or read about it on the [RN Docs](https://facebook.github.io/react-native/docs/flexbox.html).
 <br/><br/>
 When developing a scalable component with flex you need to convert your View's size **and its margins** with 
 proportion to the parent component. If for example your container's width is 375 and your box's width is 300 - 
 the box's width is 80% of the parent (300/375) and the margins are what left - 10% on the left and 10% on the right.
+<br/>
+Alternatively, you can keep your margins static (represented by dp) and spread over the available space using `flex: 1`.
 <br/><br/>
 Here's an example how I *flexed* my component. I only flexed the white box and skipped flexing the buttons because I'm lazy,
- but you get the point (StyleSheet stayed the same except `width` and `height` were removed from `box`):
+ but you get the point (StyleSheet stayed the same except `width` and `height` were removed from `box` and `container`):
  
  ```javascript
 const FlexExample = () =>
-    <View style={styles.container}>
-        <View style={{flex: 16}}/>
+    <View style={[styles.container, {flex: 1}]}>
+        <View style={{flex: 16}}/> 
         <View style={{flexDirection: 'row', flex: 68}}>
             <View style={{flex: 1}}/>
             <View style={[styles.box, {flex: 8}]}>
@@ -156,12 +159,12 @@ And the result:
 </div>
 <br/>
 
-Even though the box's size looks good on the tablet, I personally don't recommend flexing your components for scaling.
-<br/>
-Flex can be an amazing solution for a lot of stuff, but not necessarily for scaling, because:
-* The resulting code is messy with a lot of empty Views.
-* You can only flex properties like width, height, margin and padding. Stuff like font-size or shadow-radius can't be flexed.
-* Calculating everything with flex takes time, and as we know, time is money.
+Flex is your best friend when creating a scalable **layout**, especially when wanting to spread on the entire width or height (i.e. a list item) 
+or when dividing a component to different sections. It will keep the same proportions among different devices, even when changing orientation. 
+<br/><br/>
+Although flex is an amazing tool, it's not always enough for scaling. Some components won't scale easily with flex 
+and you can only flex properties like width, height, margin and padding. 
+Stuff like font-size, shadow-radius or SVG size can't be flexed.
 
 With that said, let’s continue to our second method.
 
@@ -234,11 +237,8 @@ What can you do? If you reduce the viewports it will affect the iPhone as well.<
 One option is to do something like HTML's `media-query` using [PixelRatio](https://facebook.github.io/react-native/docs/pixelratio.html).
 But as I said, I'm lazy and I don't want to write everything 2 or more times, what can I do?
 
-<p align="center">
-    <img src="images/meme.jpg" height="250"/>
-</p>
 
- <h3>Method 3: Scaling Utils</h3>
+<h3>Method 3: Scaling Utils</h3>
  Here at Soluto, we wrote these 3 simple functions that make our scaling so much easier:
   ```javascript
 import { Dimensions } from 'react-native';
@@ -253,12 +253,22 @@ export {scale, verticalScale, moderateScale};
 
 `scale` function is pretty straight forward and will return the same linear result as using viewport.<br/>
 `verticalScale` is like scale, but based on height instead of width, which can be useful.<br/>
-The real magic happens at `moderateScale`. You can check the formula, but long story short, 
-it won't 'exaggerate' when scaling for a big screen. You can also control the resize factor,
-passing `1` as the resize factor will be like regular `scale`, and passing `0` will be like no scaling at all.<br/>
+The real magic happens at `moderateScale`. The cool thing about it is that you can control the resize factor (default is 0.5),
+meaning that if normal `scale` will increase your size by 2X, `moderateScale` will only increase it by X.
+<br/><br/>
+If you'd want to scale a View with 300dp width, on the iPhone 7 you will get:
+ * scale(300) = 320
+ * moderateScale(300) = 310
+ 
+ On the Tablet:
+ * scale(300) = 660
+ * moderateScale(300) = 480
+ 
+This allows writing once, keeping stuff roughly the same size across mobile phones 
+and still not looking massive and bulky on tablets.
+<br/>
 
-Anyways, enough talking. Here are the results after combining `scale`, `moderateScale` and `verticalScale` 
-until your designer is pleased.
+Anyways, enough talking. Here are the results after using scaling utils until your designer is pleased.
 
 StyleSheet:
 ```javascript
@@ -284,7 +294,7 @@ const styles = StyleSheet.create({
     button: {
         width: moderateScale(150, 0.3),
         height: moderateScale(45, 0.3),
-        marginBottom: moderateScale(10, 0.6),
+        marginBottom: moderateScale(10),
         ...
     },
     buttonText: {
@@ -300,7 +310,11 @@ Result:
     <img src="images/tabletscaling.png" height="450" hspace="20"/>
 </div>
 <br/>
-Like Morpheus said - a walk in the park :)<br/><br/>
+
+
+What I found to work best for me was creating the layout with Flex when possible, and scaling all the other
+ stuff like buttons and texts using the scaling utils.
+ 
 What I didn't cover is scaling images and handling orientation change. We'll keep that for a different post. 
 <br/>I hope you found this post useful. Scaling is super important, even if your app is not for tablets. Friends don't let friends skip scaling!
 
