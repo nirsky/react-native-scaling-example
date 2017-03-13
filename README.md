@@ -263,9 +263,9 @@ If you'd want to scale a View with 300dp width, on the iPhone 7 you will get:
 - moderateScale(300, 0.25) = 305
  
 On the Galaxy Tab Tablet:
-- scale(300) = 660  = 300 + 360
-- moderateScale(300) = 480 = 300 + 360/2 
-- moderateScale(300, 0.25) = 390 = 300 + 360/4 
+- scale(300) = 300 + 360 = 660
+- moderateScale(300) = 300 + 360/2 = 480
+- moderateScale(300, 0.25) = 300 + 360/4 = 390 
 
 This allows writing once, keeping stuff roughly the same size across mobile phones 
 and yet not looking massive and bulky on tablets.<br/>
