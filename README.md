@@ -264,6 +264,8 @@ On the Galaxy Tab Tablet:
 - scale(300) = 660
 - moderateScale(300) = 480
 
+This allows writing once, keeping stuff roughly the same size across mobile phones 
+and still not looking massive and bulky on tablets.<br/>
 Anyways, enough talking. Here are the results after using scaling utils until your designer is pleased.
 
 StyleSheet:
@@ -306,8 +308,7 @@ Result:
     <img src="images/tabletscaling.png" height="450" hspace="20"/>
 </div>
 <br/>
-As seen, This allows writing once, keeping stuff roughly the same size across mobile phones 
-and still not looking massive and bulky on tablets.
+As mentioned, the iPhone keeps it's proportions and the tablet gets a soft, nice and non-bulky feel. 
 
 -------
 
