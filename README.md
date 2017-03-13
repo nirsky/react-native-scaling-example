@@ -257,12 +257,12 @@ The real magic happens at `moderateScale`. The cool thing about it is that you c
 meaning that if normal `scale` will increase your size by 2X, `moderateScale` will only increase it by X.
 <br/><br/>
 If you'd want to scale a View with 300dp width, on the iPhone 7 you will get:
- * scale(300) = 320
- * moderateScale(300) = 310
+- scale(300) = 320
+- moderateScale(300) = 310
  
- On the Tablet:
- * scale(300) = 660
- * moderateScale(300) = 480
+On the Galaxy Tab Tablet:
+- scale(300) = 660
+- moderateScale(300) = 480
  
 This allows writing once, keeping stuff roughly the same size across mobile phones 
 and still not looking massive and bulky on tablets.
@@ -313,7 +313,7 @@ Result:
 
 
 What I found to work best for me was creating the layout with Flex when possible, and scaling all the other
- stuff like buttons and texts using the scaling utils.
+ stuff like buttons, texts and SVGs using the scaling utils.
  
 What I didn't cover is scaling images and handling orientation change. We'll keep that for a different post. 
 <br/>I hope you found this post useful. Scaling is super important, even if your app is not for tablets. Friends don't let friends skip scaling!
