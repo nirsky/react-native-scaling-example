@@ -123,9 +123,9 @@ When developing a scalable component with flex you need to convert your View's s
 proportion to the parent component. If for example your container's width is 375 and your box's width is 300 - 
 the box's width is 80% of the parent (300/375) and the margins are what left - 10% on the left and 10% on the right.
 <br/>
-Alternatively, you can keep your margins static (represented by dp) and spread over the available space using `flex: 1`.
+Alternatively, you can keep your margins static (represented by dp) and spread it across the available space using `flex: 1`.
 <br/><br/>
-Here's an example how I *flexed* my component. I only flexed the white box and skipped flexing the buttons because I'm lazy,
+Here's an example of how I *flexed* my component. I only flexed the white box and skipped flexing the buttons because I'm lazy,
  but you get the point (StyleSheet stayed the same except `width` and `height` were removed from `box` and `container`):
  
  ```javascript
@@ -159,14 +159,15 @@ And the result:
 </div>
 <br/>
 
-Flex is your best friend when creating a scalable **layout**, especially when wanting to spread on the entire width or height (i.e. a list item) 
+Flex is your best friend when creating a scalable **layout**, especially when wanting to spread it across the entire width or height (i.e. a list item) 
 or when dividing a component to different sections. It will keep the same proportions among different devices, even when changing orientation. 
 <br/><br/>
-Although flex is an amazing tool, it's not always enough for scaling. Some components won't scale easily with flex 
-and you can only flex properties like width, height, margin and padding. 
+While flex is an amazing tool for scaling, it's not always enough. 
+With flex, some components won't scale easily and it’s limited to certain properties like width, height, margin and padding. 
 Stuff like fontSize, lineHeight or SVG size can't be flexed.
 
 With that said, let’s continue to our second method.
+
 
  
  <h3>Method 2: Viewport Units</h3>
@@ -254,14 +255,14 @@ const moderateScale = (size, factor = 0.5) => size + ( scale(size) - size ) * fa
 
 export {scale, verticalScale, moderateScale};
 ```
-These functions purpose is to design once on a standard mobile phone and apply them on the used sizes.<br/>
+The purpose of these functions is to be able to take one design (from a standard mobile phone) and apply it to other display sizes. <br/>
 `scale` function is pretty straight forward and will return the same linear result as using viewport.<br/>
 `verticalScale` is like scale, but based on height instead of width, which can be useful.<br/>
-The real magic happens at `moderateScale`. The cool thing about it is that you can control the resize factor (default is 0.5),
-meaning that if normal `scale` will increase your size by +2X, `moderateScale` will only increase it by +X.
-<br/>Or if the resize factor is 0.25, instead of increasing by +2X it will increase by +0.5X.
+The real magic happens at `moderateScale`. The cool thing about it is that you can control the resize factor (default is 0.5).<br/>
+So if normal scale will increase your size by +2X, moderateScale will only increase it by +X.<br/>
+Or if the resize factor is 0.25, instead of increasing by +2X it will increase by +0.5X. 
 <br/><br/>
-If you'd want to scale a View with 300dp width, on the iPhone 7 you will get:
+If you want to scale a View with 300dp width, on the iPhone 7 you will get:
 - scale(300) = 320
 - moderateScale(300) = 310
 - moderateScale(300, 0.25) = 305
@@ -271,8 +272,7 @@ On the Galaxy Tab Tablet:
 - moderateScale(300) = 300 + 360/2 = 480
 - moderateScale(300, 0.25) = 300 + 360/4 = 390 
 
-This allows writing once, keeping stuff roughly the same size across mobile phones 
-and yet not looking massive and bulky on tablets.<br/>
+This allow us to write only once, keeping stuff roughly the same size across mobile phones without looking massive and bulky on tablets.<br/>
 Anyways, enough talking. Here are the results after using scaling utils until your designer is pleased.
 
 StyleSheet:
@@ -315,12 +315,12 @@ Result:
     <img src="images/tabletscaling.png" height="450" hspace="20"/>
 </div>
 <br/>
-As mentioned, the iPhone keeps it's proportions and the tablet gets a soft, nice and non-bulky feel. 
+As mentioned, the iPhone keeps its proportions and the tablet gets a nice, fitted feel. 
 
 -------
 
 To sum up, there are many different ways to scale your component, 
-what I found to work best for me was creating the layout with Flex when possible, and scaling all other
+what I found to work best for me was creating the layout with flex when possible, and scaling all other
 parts like margins, buttons, texts and SVGs using the scaling utils.<br/>
 What I didn't cover is scaling images and handling orientation change. We'll keep that for a different post. 
 <br/>I hope you found this post useful. Scaling is super important, even if your app is not for tablets. Friends don't let friends skip scaling!
