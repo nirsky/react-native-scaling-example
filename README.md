@@ -164,7 +164,7 @@ or when dividing a component to different sections. It will keep the same propor
 <br/><br/>
 Although flex is an amazing tool, it's not always enough for scaling. Some components won't scale easily with flex 
 and you can only flex properties like width, height, margin and padding. 
-Stuff like font-size, shadow-radius or SVG size can't be flexed.
+Stuff like fontSize, lineHeight or SVG size can't be flexed.
 
 With that said, let’s continue to our second method.
 
@@ -244,18 +244,22 @@ But as I said, I'm lazy and I don't want to write everything 2 or more times, wh
 import { Dimensions } from 'react-native';
 const { width, height } = Dimensions.get('window');
 
-const scale = size => width / 350 * size;
-const verticalScale = size => height / 680 * size;
+//Guideline sizes are based on standard ~5" screen mobile device
+const guidelineBaseWidth = 350;
+const guidelineBaseHeight = 680;
+
+const scale = size => width / guidelineBaseWidth * size;
+const verticalScale = size => height / guidelineBaseHeight * size;
 const moderateScale = (size, factor = 0.5) => size + ( scale(size) - size ) * factor;
 
 export {scale, verticalScale, moderateScale};
 ```
-
+These functions purpose is to design once on a standard mobile phone and apply them on the used sizes.<br/>
 `scale` function is pretty straight forward and will return the same linear result as using viewport.<br/>
 `verticalScale` is like scale, but based on height instead of width, which can be useful.<br/>
 The real magic happens at `moderateScale`. The cool thing about it is that you can control the resize factor (default is 0.5),
-meaning that if normal `scale` will increase your size by 2X, `moderateScale` will only increase it by X.
-<br/>Or if the resize factor is 0.25, instead of increasing by 2X it will increase by 0.5X.
+meaning that if normal `scale` will increase your size by +2X, `moderateScale` will only increase it by +X.
+<br/>Or if the resize factor is 0.25, instead of increasing by +2X it will increase by +0.5X.
 <br/><br/>
 If you'd want to scale a View with 300dp width, on the iPhone 7 you will get:
 - scale(300) = 320
