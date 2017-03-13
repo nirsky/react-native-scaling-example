@@ -255,17 +255,20 @@ export {scale, verticalScale, moderateScale};
 `verticalScale` is like scale, but based on height instead of width, which can be useful.<br/>
 The real magic happens at `moderateScale`. The cool thing about it is that you can control the resize factor (default is 0.5),
 meaning that if normal `scale` will increase your size by 2X, `moderateScale` will only increase it by X.
+<br/>Or if the resize factor is 0.25, instead of increasing by 2X it will increase by 0.5X.
 <br/><br/>
 If you'd want to scale a View with 300dp width, on the iPhone 7 you will get:
 - scale(300) = 320
 - moderateScale(300) = 310
+- moderateScale(300, 0.25) = 305
  
 On the Galaxy Tab Tablet:
-- scale(300) = 660
-- moderateScale(300) = 480
+- scale(300) = 660  = 300 + 360
+- moderateScale(300) = 480 = 300 + 360/2 
+- moderateScale(300, 0.25) = 390 = 300 + 360/4 
 
 This allows writing once, keeping stuff roughly the same size across mobile phones 
-and still not looking massive and bulky on tablets.<br/>
+and yet not looking massive and bulky on tablets.<br/>
 Anyways, enough talking. Here are the results after using scaling utils until your designer is pleased.
 
 StyleSheet:
@@ -312,7 +315,8 @@ As mentioned, the iPhone keeps it's proportions and the tablet gets a soft, nice
 
 -------
 
-To sum up, what I found to work best for me was creating the layout with Flex when possible, and scaling all other
+To sum up, there are many different ways to scale your component, 
+what I found to work best for me was creating the layout with Flex when possible, and scaling all other
 parts like margins, buttons, texts and SVGs using the scaling utils.<br/>
 What I didn't cover is scaling images and handling orientation change. We'll keep that for a different post. 
 <br/>I hope you found this post useful. Scaling is super important, even if your app is not for tablets. Friends don't let friends skip scaling!
