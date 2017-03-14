@@ -1,14 +1,14 @@
-<h1>Make your React-Native App Look Great in Every Size</h1>
+<h1>Size Matters: How I Used React Native to Make my App Look Great on Every Device</h1>
 
 *Every example on this post can be found [here](https://github.com/Nirsky/react-native-scaling-example).*
 
-Have you ever had your designer hand you a cool design for your React-Native app that you developed on, say, an iPhone 7 - and when you try to run it on a tablet, 
+Have you ever had your designer hand you a cool design for your React Native app that you developed on, say, an iPhone 7 - and when you try to run it on a tablet, 
 it looks like it was left in the dryer for too long? 
 <br/>
 That's probably because the design was created using pixels whereas all dimensions in React Native are unitless, 
 represented by “dp” (density-independent pixels). Simply put - the bigger your device is, the more dp it'll have. 
 <br/>
-When working with React-Native, the iPhone 7 has **375dp** width and **667dp** height and a Galaxy Tab A 8.0" Tablet (the one I'm using) has **768dp** width and **1024dp** height.
+When working with React Native, the iPhone 7 has **375dp** width and **667dp** height and a Galaxy Tab A 8.0" Tablet (the one I'm using) has **768dp** width and **1024dp** height.
 <br/>
 So while a `<View style={{width: 300, height: 450}}/>` will cover most of your iPhone's screen, 
 it will cover less than half of your tablet's screen.
@@ -273,7 +273,7 @@ On the Galaxy Tab Tablet:
 - moderateScale(300, 0.25) = 300 + 360/4 = 390 
 
 This allow us to write only once, keeping stuff roughly the same size across mobile phones without looking massive and bulky on tablets.<br/>
-Anyways, enough talking. Here are the results after using scaling utils until your designer is pleased.
+Anyways, enough talking. Here are the results after applying scaling utils on the original dp sizes until your designer is pleased.
 
 StyleSheet:
 ```javascript
