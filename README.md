@@ -1,4 +1,4 @@
-<h1>Size Matters: How I Used React Native to Make my App Look Great on Every Device</h1>
+<h1>Size matters: how I used React Native to make my app look great on every device</h1>
 
 *Every example on this post can be found [here](https://github.com/Nirsky/react-native-scaling-example).*
 
