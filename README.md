@@ -241,6 +241,7 @@ But as I said, I'm lazy and I don't want to write everything 2 or more times, wh
 
 <h3>Method 3: Scaling Utils</h3>
  Here at Soluto, we wrote these 3 simple functions that make our scaling so much easier:
+ 
   ```javascript
 import { Dimensions } from 'react-native';
 const { width, height } = Dimensions.get('window');
